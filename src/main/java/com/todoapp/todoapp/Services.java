@@ -41,8 +41,11 @@ public class Services {
 
 	public void updateTask(Tasks task) {
 		// TODO Auto-generated method stub
+		System.out.println("input-> "+task);
 		Tasks existingTask=repo.findById(task.getId()).orElse(null);
+	
 		existingTask.setTasks(task.getTasks());
+		existingTask.setStatus(task.getStatus());
 		
 		repo.save(existingTask);
 		
