@@ -1,4 +1,4 @@
-package com.todoapp.todoapp;
+package com.todoapp.todoapp.models;
 
 public enum Status {
     PENDING,

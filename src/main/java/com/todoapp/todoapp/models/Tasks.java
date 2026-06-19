@@ -1,4 +1,4 @@
-package com.todoapp.todoapp;
+package com.todoapp.todoapp.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

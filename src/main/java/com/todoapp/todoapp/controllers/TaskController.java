@@ -1,4 +1,4 @@
-package com.todoapp.todoapp;
+package com.todoapp.todoapp.controllers;
 
 import java.util.List;
 
@@ -7,13 +7,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.todoapp.todoapp.models.Tasks;
+import com.todoapp.todoapp.services.TaskService;
+
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/tasks")
-public class Controller {
+public class TaskController {
 
     @Autowired
-    private Services services;
+    private TaskService services;
 
     @GetMapping
     public ResponseEntity<List<Tasks>> getAllTasks() {
@@ -25,7 +28,7 @@ public class Controller {
         services.addTask(task);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("Task created successfully");
-    } // <-- Missing brace was here
+    } 
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteTask(@PathVariable Long id) {

@@ -1,14 +1,18 @@
-package com.todoapp.todoapp;
+package com.todoapp.todoapp.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.todoapp.todoapp.models.Tasks;
+import com.todoapp.todoapp.repositories.TaskRepository;
+
 @Service
-public class Services {
-	@Autowired
-	private Repo repo;
+public class TaskService{
+
+    @Autowired
+	private TaskRepository repo;
 
 	
 
