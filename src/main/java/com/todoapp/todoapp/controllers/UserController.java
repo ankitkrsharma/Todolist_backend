@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.todoapp.todoapp.dto.LoginRequestDTO;
 import com.todoapp.todoapp.models.User;
 import com.todoapp.todoapp.services.UserService;
 
@@ -23,12 +24,6 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    @PostMapping
-    public ResponseEntity<String> addUser(@RequestBody User user) {
-        userService.addUser(user);
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body("User created successfully");
-    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable Long id) {
@@ -37,13 +32,52 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateUser(
+    public ResponseEntity<String> updatePassword(
             @PathVariable Long id,
             @RequestBody User user) {
 
         user.setId(id);
-        userService.updateUser(user);
+        userService.updatePassword(user);
 
         return ResponseEntity.ok("User updated successfully");
+        
+        
+        
     }
+    
+    
+    @PostMapping("/signup")
+    public ResponseEntity<String> register(
+    		@RequestBody User user
+    		){
+    	
+    	userService.addUser(user);
+    	
+    	return ResponseEntity.status(HttpStatus.CREATED).body("User has been signed in");    	
+    }
+    
+    @PostMapping("/login")
+    public ResponseEntity<String> login(
+    		@RequestBody LoginRequestDTO user){
+    	
+    	userService.validateCreditial(user);
+    	
+    	
+    	
+    	
+    	return ResponseEntity.status(HttpStatus.OK).body("Login Succesful");
+    		
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    }
+    
+    
+    
+    
 }
